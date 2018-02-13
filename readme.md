@@ -1,4 +1,4 @@
-# angular-ga [![Build Status](https://travis-ci.org/SamVerschueren/angular-ga.svg?branch=master)](https://travis-ci.org/SamVerschueren/angular-ga)
+# googleanalytics-angular [![Build Status](https://travis-ci.org/mihaistanescu/googleanalytics-angular.svg?branch=PublishBranch)](https://travis-ci.org/mihaistanescu/googleanalytics-angular)
 
 > Google Analytics for your Angular application
 
@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save angular-ga
+$ npm install --save googleanalytics-angular
 ```
 
 
@@ -19,7 +19,7 @@ The Google Analytics tracking script is not included in this module. Make sure t
 ```js
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { GoogleAnalyticsModule, GA_TOKEN } from 'angular-ga';
+import { GoogleAnalyticsModule, GA_TOKEN } from 'googleanalytics-angular';
 
 import { AppComponent } from './app.component';
 
@@ -61,7 +61,7 @@ Inject the `GoogleAnalyticsService` into your components or services.
 
 ```js
 import { Component, OnInit } from '@angular/core';
-import { GoogleAnalyticsService } from 'angular-ga';
+import { GoogleAnalyticsService } from 'googleanalytics-angular';
 
 @Component({
 	templateUrl: 'app.component.html'
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
 
 ```js
 import { Component, OnInit } from '@angular/core';
-import { GoogleAnalyticsService } from 'angular-ga';
+import { GoogleAnalyticsService } from 'googleanalytics-angular';
 
 @Component({
 	templateUrl: 'app.component.html'
@@ -102,8 +102,36 @@ export class AppComponent implements OnInit {
 }
 ```
 
+#### Named Tracker 
 
-### Service
+More information about named trackers can be found [`here`](https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference).
+
+```js
+import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsService } from 'googleanalytics-angular';
+
+@Component({
+	templateUrl: 'app.component.html'
+})
+export class AppComponent implements OnInit {
+
+	constructor(
+		private gaService: GoogleAnalyticsService
+	) { }
+
+	ngOnInit() {
+		var options = { 
+			clientId: 'clientId',
+			cookieDomain: 'auto',
+			name: 'trackerName',
+			namedTracker: true
+		}
+
+		this.gaService.configure('UA-TOKEN-1', options);
+	}
+}
+```
+
 
 
 ## API
@@ -122,6 +150,11 @@ Type: `Object` `string`<br>
 Default: `auto`
 
 Any of the [`Create Only Fields`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#create).
+
+The ability to send to named tracker with option `namedTracker`<br>
+Type: `boolean`<br>
+Default: `false`
+
 
 ### service.event.emit(event: Event)
 
@@ -174,7 +207,10 @@ Type: `string`
 
 The title of the page (e.g. homepage)
 
+##Original Author
+
+Thanks to Sam Verschueren for the original implementation.
 
 ## License
 
-MIT © [Sam Verschueren](https://github.com/SamVerschueren)
+MIT © [Mihai Stanescu](https://github.com/mihaistanescu)

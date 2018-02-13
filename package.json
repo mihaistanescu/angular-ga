@@ -1,12 +1,12 @@
 {
-  "name": "angular-ga",
-  "version": "1.0.1",
+  "name": "googleanalytics-angular",
+  "version": "1.0.4",
   "description": "Google Analytics for your Angular application",
   "license": "MIT",
-  "repository": "SamVerschueren/angular-ga",
+  "repository": "mihaistanescu/googleanalytics-angular",
   "author": {
-    "name": "Sam Verschueren",
-    "email": "sam.verschueren@gmail.com"
+    "name": "Mihai Stanescu",
+    "email": "mihai.stanescu87@gmail.com"
   },
   "engines": {
     "node": ">=4"
