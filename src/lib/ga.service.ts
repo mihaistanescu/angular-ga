@@ -39,6 +39,11 @@ export class GoogleAnalyticsService {
 		this.event.subscribe((x: Event) => this.onEvent(x));
 		this.pageview.subscribe((x: PageView) => this.onPageView(x));
 	}
+	
+	close(){
+		if(this.event) this.event.unsubscribe();
+		if(this.pageview) this.pageview.unsubscribe();
+	}
 
 	set(fieldsObject: any): void;
 	set(fieldName: string, fieldValue: any): void;

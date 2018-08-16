@@ -1,6 +1,6 @@
 {
   "name": "googleanalytics-angular",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Google Analytics for your Angular application",
   "license": "MIT",
   "repository": "mihaistanescu/googleanalytics-angular",
